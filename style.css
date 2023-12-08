@@ -1,38 +1,44 @@
 #area-jogo {
-    display: grid;
-    position: relative;
-    margin: auto;
-    grid-template-columns: repeat(3, 80px); /* Três colunas de largura igual */
-    grid-template-rows: repeat(3, 80px); /* Três linhas de altura igual*/
-    gap: 5px; /* Espaço entre as casas */
-    width: 300px; /* Largura total da área de jogo */
+  display: grid;
+  position: relative;
+  margin: auto;
+  grid-template-columns: repeat(3, 80px); /* Três colunas de largura igual */
+  grid-template-rows: repeat(3, 80px); /* Três linhas de altura igual*/
+  gap: 5px; /* Espaço entre as casas */
+  width: 300px; /* Largura total da área de jogo */
+  grid-auto-flow: column;
 }
 
-.casa {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #000; 
-  }
+#area-jogo div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #000; 
+}
 
-  .jogador1 {
-    position: absolute;
-    right: 50px;
-  }
+.jogador1 {
+  position: absolute;
+  right: 50px;
+}
 
-  .jogador2 {
-    position: absolute;
-    left: 50px;
-  }
+.jogador2 {
+  position: absolute;
+  left: 50px;
+}
 
-  .dado {
-    background-color: gray;
-    width: 250px;
-    height: 150px;
-  }
+.dado {
+  background-color: gray;
+  width: 250px;
+  height: 150px;
+}
 
-  .vencedor {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.vencedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.soma {
+  position: relative;
+  
+}
