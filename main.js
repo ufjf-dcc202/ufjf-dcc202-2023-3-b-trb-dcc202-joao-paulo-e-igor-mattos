@@ -1,3 +1,39 @@
+import { escolheNumDado } from "./jogada.js";
+
+/*const vez = j1;
+
+function setVezJogador(){
+    const vezJogador = true;
+    const vezMaquina = false;
+    if()
+}
+*/
+
+const estadoTabuleiro = {
+    jogador1: [
+        0, 0, 0, 0, 0, 0, 0, 0, 0
+    ],
+    jogador2: [
+        0, 0, 0, 0, 0, 0, 0, 0, 0
+    ]
+};
+
+console.log(estadoTabuleiro);
+
+function mostraDado(){
+    const dado1 = document.querySelector('#j1');
+    const dado2 = document.querySelector('#j2');
+    dado1.textContent = escolheNumDado();
+    dado2.textContent = escolheNumDado();
+}
+
+const dado1 = document.querySelector('#j1');
+const dado2 = document.querySelector('#j2');
+dado1.addEventListener('click', mostraDado);
+dado2.addEventListener('click', mostraDado);
+
+
+
 function somaPrimeiraCol() {
     var divs = document.querySelectorAll('#col-1');
     var soma1 = 0;
