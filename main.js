@@ -11,10 +11,14 @@ function setVezJogador(){
 
 const estadoTabuleiro = {
     jogador1: [
-        0, 0, 0, 0, 0, 0, 0, 0, 0
+        [0,0,0],
+        [0,0,0],
+        [0,0,0]
     ],
     jogador2: [
-        0, 0, 0, 0, 0, 0, 0, 0, 0
+        [0,0,0],
+        [0,0,0],
+        [0,0,0]
     ]
 };
 
@@ -38,10 +42,9 @@ function somaPrimeiraCol() {
     var divs = document.querySelectorAll('#col-1');
     var soma1 = 0;
 
-    var x0 = parseFloat(divs[0].textContent);
-    var x1 = parseFloat(divs[1].textContent);
-    var x2 = parseFloat(divs[2].textContent);
-
+    var x0 = divs[0] ? parseFloat(divs[0].textContent) || 0 : 0;
+    var x1 = divs[1] ? parseFloat(divs[1].textContent) || 0 : 0;
+    var x2 = divs[2] ? parseFloat(divs[2].textContent) || 0 : 0;
     if (x0 === x1 && x1 === x2) {
         soma1 = x0 * 3 + x1 * 3 + x2 * 3;
     } else if (x0 === x1) {
@@ -63,9 +66,9 @@ function somaSegundaCol() {
     var divs = document.querySelectorAll('#col-2');
     var soma2 = 0;
 
-    var x0 = parseFloat(divs[0].textContent);
-    var x1 = parseFloat(divs[1].textContent);
-    var x2 = parseFloat(divs[2].textContent);
+    var x0 = divs[0] ? parseFloat(divs[0].textContent) || 0 : 0;
+    var x1 = divs[1] ? parseFloat(divs[1].textContent) || 0 : 0;
+    var x2 = divs[2] ? parseFloat(divs[2].textContent) || 0 : 0;
     if (x0 === x1 && x1 === x2) {
         soma2 = x0 * 3 + x1 * 3 + x2 * 3;
     } else if (x0 === x1) {
@@ -85,9 +88,9 @@ function somaTerceiraCol() {
     var divs = document.querySelectorAll('#col-3');
     var soma3 = 0;
 
-    var x0 = parseFloat(divs[0].textContent);
-    var x1 = parseFloat(divs[1].textContent);
-    var x2 = parseFloat(divs[2].textContent);
+    var x0 = divs[0] ? parseFloat(divs[0].textContent) || 0 : 0;
+    var x1 = divs[1] ? parseFloat(divs[1].textContent) || 0 : 0;
+    var x2 = divs[2] ? parseFloat(divs[2].textContent) || 0 : 0;
     if (x0 === x1 && x1 === x2) {
         soma3 = x0 * 3 + x1 * 3 + x2 * 3;
     } else if (x0 === x1) {
@@ -122,9 +125,9 @@ function somaPrimeiraCol2() {
     var divs = document.querySelectorAll('#col2-1');
     var soma1 = 0;
 
-    var x0 = parseFloat(divs[0].textContent);
-    var x1 = parseFloat(divs[1].textContent);
-    var x2 = parseFloat(divs[2].textContent);
+    var x0 = divs[0] ? parseFloat(divs[0].textContent) || 0 : 0;
+    var x1 = divs[1] ? parseFloat(divs[1].textContent) || 0 : 0;
+    var x2 = divs[2] ? parseFloat(divs[2].textContent) || 0 : 0;
     
     if (x0 === x1 && x1 === x2) {
         soma1 = x0 * 3 + x1 * 3 + x2 * 3;
@@ -147,9 +150,9 @@ function somaSegundaCol2() {
     var divs = document.querySelectorAll('#col2-2');
     var soma2 = 0;
 
-    var x0 = parseFloat(divs[0].textContent);
-    var x1 = parseFloat(divs[1].textContent);
-    var x2 = parseFloat(divs[2].textContent);
+    var x0 = divs[0] ? parseFloat(divs[0].textContent) || 0 : 0;
+    var x1 = divs[1] ? parseFloat(divs[1].textContent) || 0 : 0;
+    var x2 = divs[2] ? parseFloat(divs[2].textContent) || 0 : 0;
     if (x0 === x1 && x1 === x2) {
         soma2 = x0 * 3 + x1 * 3 + x2 * 3;
     } else if (x0 === x1) {
@@ -169,9 +172,9 @@ function somaTerceiraCol2() {
     var divs = document.querySelectorAll('#col2-3');
     var soma3 = 0;
 
-    var x0 = parseFloat(divs[0].textContent);
-    var x1 = parseFloat(divs[1].textContent);
-    var x2 = parseFloat(divs[2].textContent);
+    var x0 = divs[0] ? parseFloat(divs[0].textContent) || 0 : 0;
+    var x1 = divs[1] ? parseFloat(divs[1].textContent) || 0 : 0;
+    var x2 = divs[2] ? parseFloat(divs[2].textContent) || 0 : 0;
     if (x0 === x1 && x1 === x2) {
         soma3 = x0 * 3 + x1 * 3 + x2 * 3;
     } else if (x0 === x1) {
@@ -206,9 +209,9 @@ var total2 = parseFloat(somaColunas2(soma1, soma2, soma3));
 var campeao = document.querySelector('#vencedor');
 
 if(total1 > total2){
-    campeao.textContent = 'Jogador 1!';
-} else if(total2 > total1) {
     campeao.textContent = 'Jogador 2!';
+} else if(total2 > total1) {
+    campeao.textContent = 'Jogador 1!';
 } else {
     campeao.textContent = 'VENCEDOR!';
 }
