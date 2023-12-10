@@ -1,13 +1,9 @@
-import { escolheNumDado } from "./jogada.js";
+import { escolheNumDado, atualizaTurno } from "./jogada.js";
 
-/*const vez = j1;
 
-function setVezJogador(){
-    const vezJogador = true;
-    const vezMaquina = false;
-    if()
-}
-*/
+escolheNumDado();
+atualizaTurno();
+
 
 const estadoTabuleiro = {
     jogador1: [
@@ -24,17 +20,18 @@ const estadoTabuleiro = {
 
 console.log(estadoTabuleiro);
 
-function mostraDado(){
+/*function mostraDado(){
     const dado1 = document.querySelector('#j1');
     const dado2 = document.querySelector('#j2');
     dado1.textContent = escolheNumDado();
     dado2.textContent = escolheNumDado();
+    atualizaTurno();
 }
 
 const dado1 = document.querySelector('#j1');
 const dado2 = document.querySelector('#j2');
 dado1.addEventListener('click', mostraDado);
-dado2.addEventListener('click', mostraDado);
+dado2.addEventListener('click', mostraDado);*/
 
 
 
@@ -209,10 +206,8 @@ var total2 = parseFloat(somaColunas2(soma1, soma2, soma3));
 var campeao = document.querySelector('#vencedor');
 
 if(total1 > total2){
-    campeao.textContent = 'Jogador 2!';
+    campeao.textContent = 'Jogador 2 Venceu!';
 } else if(total2 > total1) {
-    campeao.textContent = 'Jogador 1!';
-} else {
-    campeao.textContent = 'VENCEDOR!';
-}
+    campeao.textContent = 'Jogador 1 Venceu!';
+} 
 
