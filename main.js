@@ -21,3 +21,16 @@ somaColuna(tabuleiroJ2);
 
 pontuacaoJogador(tabuleiroJ1);
 pontuacaoJogador(tabuleiroJ2);
+
+function fimDeJogo(){
+    const totalJ1 = pontuacaoJogador(tabuleiroJ1);
+    const totalJ2 = pontuacaoJogador(tabuleiroJ2);
+
+    let campeao = document.getElementById('vencedor');
+
+    if(totalJ1 > totalJ2){
+        campeao.textContent = 'Jogador 1!';
+    } else if(totalJ2 > totalJ1) {
+        campeao.textContent = 'Jogador 2!';
+    } 
+}

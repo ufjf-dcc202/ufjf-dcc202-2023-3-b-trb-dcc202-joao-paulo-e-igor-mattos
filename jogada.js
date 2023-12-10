@@ -43,7 +43,7 @@ function pontuacaoJogador(table){
     const colunas = somaColuna(table);
     const total = colunas[0] + colunas[1] + colunas[2];
 
-    console.log(total);
+    return total;
 }
 
 function escolheNumDado() {
