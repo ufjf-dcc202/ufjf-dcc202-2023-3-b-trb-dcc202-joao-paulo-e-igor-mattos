@@ -2,7 +2,6 @@ import {getTable, escolheNumDado, atualizaTabuleiro, somaColuna, pontuacaoJogado
 
 const celulas = document.querySelectorAll('.cell');
 const celulas2 = document.querySelectorAll('.cell2'); 
-
 var tabuleiroJ1 = [ 
     [0,0,0],
     [0,0,0],
@@ -15,8 +14,21 @@ var tabuleiroJ2 = [
 ];
 const dado1 = document.getElementById('j1');
 const dado2 = document.getElementById('j2');
+let vezJogador = 1;
 
-jogaDado(dado1);
+jogo();
+
+function jogo(){
+    if(vezJogador == 1){
+
+        jogaDado(dado1);
+        vezJogador = 2;
+    }
+    else{
+        jogaDado(dado2);
+        vezJogador = 1;
+    }
+}
 
 function jogaDado(dado){
     dado.addEventListener("click", function(event) {
@@ -67,6 +79,10 @@ function selecionaColuna(event) {
         }
     }
     atualizaTabuleiro(tabuleiroJ1, celulas);
+    let somaJ1 = pontuacaoJogador(tabuleiroJ1);
+    let pontosJ1 = document.getElementById('p1');
+    let pontosJ2 = document.getElementById('p2');
+    pontosJ1.textContent = `${somaJ1}`;
 }
 
 function fimDeJogo(){

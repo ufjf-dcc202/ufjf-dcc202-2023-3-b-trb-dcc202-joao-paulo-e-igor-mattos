@@ -54,3 +54,8 @@
   width: 80px;
   height: 80px;
 }
+
+#p1, #p2{
+  font-size: 24px;
+  text-align: center;
+}
