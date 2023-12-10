@@ -9,7 +9,12 @@ function atualizaTabuleiro(table, cell){
 
     for(let i=0; i<3; i++){
         for(let j=0; j<3; j++){
-            table[j][i] = parseInt(cell[i * 3 + j].textContent);
+            if(table[j][i] == 0){
+                cell[i * 3 + j].textContent = '';
+            }
+            else{
+                cell[i * 3 + j].textContent = table[j][i];
+            }
         }
     }
 }

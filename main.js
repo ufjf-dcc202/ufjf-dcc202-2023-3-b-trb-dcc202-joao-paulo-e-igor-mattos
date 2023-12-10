@@ -19,15 +19,7 @@ let vezJogador = 1;
 jogo();
 
 function jogo(){
-    if(vezJogador == 1){
-
-        jogaDado(dado1);
-        vezJogador = 2;
-    }
-    else{
-        jogaDado(dado2);
-        vezJogador = 1;
-    }
+    jogaDado(dado1);
 }
 
 function jogaDado(dado){
@@ -56,33 +48,31 @@ function selecionaColuna(event) {
 
     if((indice >= 0 && indice < 2) || (indice > 0 && indice <= 2)){
         for(let i=0; i<3; i++){
-            if(celulas[i].textContent == ''){
-                celulas[i].textContent = dado1.textContent;
+            if(tabuleiroJ1[i][0] == 0){
+                tabuleiroJ1[i][0] = parseInt(dado1.textContent);
                 i = 3;
             }
         }
     }
     else if((indice >= 3 && indice < 5) || (indice > 3 && indice <= 5)){
-        for(let i=3; i<6; i++){
-            if(celulas[i].textContent == ''){
-                celulas[i].textContent = dado1.textContent;
+        for(let i=0; i<3; i++){
+            if(tabuleiroJ1[i][1] == 0){
+                tabuleiroJ1[i][1] = parseInt(dado1.textContent);
                 i = 6;
             }
         }
     } 
     else if((indice >= 6 && indice < 8) || (indice > 6 && indice <= 8)){
-        for(let i=6; i<9; i++){
-            if(celulas[i].textContent == ''){
-                celulas[i].textContent = dado1.textContent;
+        for(let i=0; i<3; i++){
+            if(tabuleiroJ1[i][2] == 0){
+                tabuleiroJ1[i][2] = parseInt(dado1.textContent);
                 i = 9;
             }
         }
     }
     atualizaTabuleiro(tabuleiroJ1, celulas);
-    let somaJ1 = pontuacaoJogador(tabuleiroJ1);
     let pontosJ1 = document.getElementById('p1');
-    let pontosJ2 = document.getElementById('p2');
-    pontosJ1.textContent = `${somaJ1}`;
+    pontosJ1.textContent = `${pontuacaoJogador(tabuleiroJ1)} pontos`;
 }
 
 function fimDeJogo(){
