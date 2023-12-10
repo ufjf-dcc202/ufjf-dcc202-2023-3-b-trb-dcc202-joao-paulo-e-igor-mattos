@@ -4,9 +4,9 @@ const celulas = document.querySelectorAll('.cell');
 const celulas2 = document.querySelectorAll('.cell2'); 
 
 var tabuleiroJ1 = [ 
-[0,0,0],
-[0,0,0],
-[0,0,0] 
+    [0,0,0],
+    [0,0,0],
+    [0,0,0] 
 ];
 var tabuleiroJ2 = [ 
     [0,0,0],
@@ -66,6 +66,7 @@ function selecionaColuna(event) {
             }
         }
     }
+    atualizaTabuleiro(tabuleiroJ1, celulas);
 }
 
 function fimDeJogo(){
