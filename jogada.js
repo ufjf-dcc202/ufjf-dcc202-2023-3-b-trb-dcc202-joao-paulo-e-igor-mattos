@@ -1,6 +1,7 @@
 export { getTable, escolheNumDado, atualizaTabuleiro, somaColuna, pontuacaoJogador };
 
 function getTable(table){
+
     return table;
 }
 
