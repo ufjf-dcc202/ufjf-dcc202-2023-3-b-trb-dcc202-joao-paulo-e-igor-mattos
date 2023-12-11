@@ -39,6 +39,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+#vencedor {
+  margin: auto;
 }
 
 .soma {
@@ -58,4 +64,17 @@
 #p1, #p2{
   font-size: 24px;
   text-align: center;
+}
+
+.ponto-colunas {
+  display: flex;
+  width: 250px;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+#ptsCol, #ptsCol2 {
+  flex: 1;
+  margin-right: 10px;
 }
