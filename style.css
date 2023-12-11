@@ -59,6 +59,8 @@
   align-items: center;
   width: 80px;
   height: 80px;
+  background-color: #FFF;
+  color: red;
 }
 
 #p1, #p2{
@@ -77,4 +79,9 @@
 .ptsCol, .ptsCol2{
   flex: 1;
   margin-right: 10px;
+}
+
+#vez{
+  font-size: 28px;
+  position: absolute;
 }

@@ -15,17 +15,23 @@ var tabuleiroJ2 = [
 var dado1 = document.getElementById('j1');
 var dado2 = document.getElementById('j2');
 let vezJogador = 1;
+var vez = document.getElementById('vez');
 
 jogo();
 
 function jogo(){
+
+    verificaTabuleiro(tabuleiroJ1);
+    verificaTabuleiro(tabuleiroJ2);
+
     if(vezJogador === 1){
-        console.log("vez do jogador1");
         jogaDado();
+        vez.textContent = 'Vez: Jogador 1';
     } else {
-        console.log("vez do jogador2");
-        sorteiaDado();  
-    }
+        vez.textContent = 'Vez: Jogador 2';
+        setTimeout(function() {
+            sorteiaDado();
+        }, 1000);     }
 }
 
 function jogaDado() {
@@ -46,27 +52,36 @@ function handleClick(cell){
     Array.from(cell).forEach(function (elemento) {
         elemento.addEventListener('click', selecionaColuna);
     });
+
 }
 
 function sorteiaIndice(){
     let indice = Math.floor(Math.random() * 3);
-    sorteiaColuna(indice);
+    setTimeout(function() {
+        sorteiaColuna(indice);
+    }, 1000);     
 }
 
 function sorteiaColuna(indice){
-
-        for(let i=0; i<3; i++){
+    if(tabuleiroJ2[2][indice] != 0){
+        indice = 0;
+        while(tabuleiroJ2[2][indice] != 0){
+            indice++;
+        }     
+    }
+    
+    for(let i=0; i<3; i++){
             if(tabuleiroJ2[i][indice] == 0){
                 tabuleiroJ2[i][indice] = parseInt(dado2.textContent);
                 break;
             }
-        }
+    }
         descartaDado(tabuleiroJ2, celulas2);
         atualizaTabuleiro(tabuleiroJ2, celulas2);
         let pontosJ2 = document.getElementById('p2');
         pontosJ2.textContent = `${pontuacaoJogador(tabuleiroJ2)} pontos`;
-        vezJogador = vezJogador === 1 ? 2 : 1;
         pontosColuna(tabuleiroJ2, '.ptsCol2');
+        vezJogador = vezJogador === 1 ? 2 : 1;
         jogo();
 }
 
@@ -109,12 +124,12 @@ function selecionaColuna(event) {
     atualizaTabuleiro(tabuleiroJ1, celulas);
     let pontosJ1 = document.getElementById('p1');
     pontosJ1.textContent = `${pontuacaoJogador(tabuleiroJ1)} pontos`;
-    vezJogador = vezJogador === 1 ? 2 : 1;
     pontosColuna(tabuleiroJ1, '.ptsCol');
+    vezJogador = vezJogador === 1 ? 2 : 1;
     jogo();
 }
 
-function colunaCheia(tabuleiro, indice) {
+function retornaColuna(indice){
 
     let coluna;
 
@@ -128,6 +143,13 @@ function colunaCheia(tabuleiro, indice) {
         coluna = 2;
     }
 
+    return coluna;
+}
+
+function colunaCheia(tabuleiro, indice) {
+
+    let coluna = retornaColuna(indice);
+
 
     if (tabuleiro[2][coluna] === 0) {
         return false;
@@ -136,13 +158,15 @@ function colunaCheia(tabuleiro, indice) {
 }
 
 function descartaDado(table, cell){
-    for(let i=0; i<3; i++){
-        for(let j=0; j<3; j++){
-            if(tabuleiroJ1[i][j] == tabuleiroJ2[i][j]){
-                if(vezJogador == 1){
-                    tabuleiroJ2[i][j] = 0;
-                }else if(vezJogador == 2){
-                    tabuleiroJ1[i][j] = 0;
+    for(let j=0; j<3; j++){
+        for(let i=0; i<3; i++){
+            for(let k=0; k<3; k++){
+                if(tabuleiroJ1[i][j] == tabuleiroJ2[k][j]){
+                    if(vezJogador == 1){
+                        tabuleiroJ2[k][j] = 0;
+                    }else if(vezJogador == 2){
+                        tabuleiroJ1[i][j] = 0;
+                    }
                 }
             }
         }
@@ -163,19 +187,35 @@ function verificaTabuleiro(table){
     }
 
     if(contador == 9){
-        fimDeJogo();
+        fimDeJogo(table);
     }
 }
 
-function fimDeJogo(){
-    const totalJ1 = pontuacaoJogador(tabuleiroJ1);
-    const totalJ2 = pontuacaoJogador(tabuleiroJ2);
-
-    let campeao = document.getElementById('vencedor');
-
-    if(totalJ1 > totalJ2){
+function fimDeJogo(table){
+    if(table === tabuleiroJ1){
         alert('Jogador 1!');
-    } else if(totalJ2 > totalJ1) {
+    } else if(table === tabuleiroJ2) {
         alert('Jogador 2!');
     } 
+    reiniciaJogo();
+}
+
+function reiniciaJogo(){
+    vezJogador = 1;
+     tabuleiroJ1 = [ 
+        [0,0,0],
+        [0,0,0],
+        [0,0,0] 
+    ];
+     tabuleiroJ2 = [ 
+        [0,0,0],
+        [0,0,0],
+        [0,0,0] 
+    ];
+    atualizaTabuleiro(tabuleiroJ1, celulas);
+    atualizaTabuleiro(tabuleiroJ2, celulas2);
+    let pontosJ1 = document.getElementById('p1');
+    let pontosJ2 = document.getElementById('p2');
+    pontosJ1.textContent = `${pontuacaoJogador(tabuleiroJ1)} pontos`;
+    pontosJ2.textContent = `${pontuacaoJogador(tabuleiroJ2)} pontos`;
 }
