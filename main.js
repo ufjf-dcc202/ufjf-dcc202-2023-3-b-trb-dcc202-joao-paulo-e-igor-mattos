@@ -19,7 +19,13 @@ let vezJogador = 1;
 jogo();
 
 function jogo(){
-    jogaDado(dado1);
+    if(vezJogador === 1){
+        console.log("vez do jogador1");
+        jogaDado(dado1);
+    } else {
+        console.log("vez do jogador2");
+        jogaDado(dado2);
+    }
 }
 
 function jogaDado(dado){
@@ -73,6 +79,8 @@ function selecionaColuna(event) {
     atualizaTabuleiro(tabuleiroJ1, celulas);
     let pontosJ1 = document.getElementById('p1');
     pontosJ1.textContent = `${pontuacaoJogador(tabuleiroJ1)} pontos`;
+    vezJogador = vezJogador === 1 ? 2 : 1;
+    jogo();
 }
 
 function fimDeJogo(){
