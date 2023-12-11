@@ -57,12 +57,11 @@ function escolheNumDado() {
     return dado;
 }
 
-function pontosColuna(table){
-
+function pontosColuna(table, ptsColClass) {
     let soma = somaColuna(table);
-    let ptsCol = document.querySelectorAll('.ptsCol');
-    
-    for(let i=0; i<3; i++){
-        ptsCol[i].textContent = soma[i]; 
+    let ptsCol = document.querySelectorAll(ptsColClass);
+
+    for (let i = 0; i < 3; i++) {
+        ptsCol[i].textContent = soma[i];
     }
 }
