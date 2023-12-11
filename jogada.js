@@ -1,4 +1,4 @@
-export { getTable, escolheNumDado, atualizaTabuleiro, somaColuna, pontuacaoJogador };
+export { getTable, escolheNumDado, atualizaTabuleiro, somaColuna, pontuacaoJogador, pontosColuna };
 
 function getTable(table){
 
@@ -55,4 +55,9 @@ function pontuacaoJogador(table){
 function escolheNumDado() {
     let dado = Math.floor(Math.random()* (6 - 1 + 1)) + 1;
     return dado;
+}
+
+function pontosColuna(){
+    let ptsCol = document.querySelectorAll('#ptsCol');
+    ptsCol.textContent = colunas[0];
 }
