@@ -53,11 +53,16 @@ function pontuacaoJogador(table){
 }
 
 function escolheNumDado() {
-    let dado = Math.floor(Math.random()* (6 - 1 + 1)) + 1;
+    let dado = Math.floor(Math.random()* 6) + 1;
     return dado;
 }
 
-function pontosColuna(){
-    let ptsCol = document.querySelectorAll('#ptsCol');
-    ptsCol.textContent = colunas[0];
+function pontosColuna(table){
+
+    let soma = somaColuna(table);
+    let ptsCol = document.querySelectorAll('.ptsCol');
+    
+    for(let i=0; i<3; i++){
+        ptsCol[i].textContent = soma[i]; 
+    }
 }

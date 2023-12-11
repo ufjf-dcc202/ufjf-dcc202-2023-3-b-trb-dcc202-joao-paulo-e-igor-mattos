@@ -74,7 +74,7 @@
   margin: auto;
 }
 
-#ptsCol, #ptsCol2 {
+.ptsCol{
   flex: 1;
   margin-right: 10px;
 }
