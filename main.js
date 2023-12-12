@@ -20,15 +20,17 @@ var vez = document.getElementById('vez');
 jogo();
 
 function jogo(){
-
+    console.log(vezJogador);
     verificaTabuleiro(tabuleiroJ1);
     verificaTabuleiro(tabuleiroJ2);
 
     if(vezJogador === 1){
         jogaDado();
         vez.textContent = 'Vez: Jogador 1';
+        dado2.textContent = '';
     } else {
         vez.textContent = 'Vez: Jogador 2';
+        dado1.textContent = '';
         setTimeout(function() {
             sorteiaDado();
         }, 1000);     }
@@ -38,7 +40,6 @@ function jogaDado() {
     function manipuladorDeClique(event) {
         event.target.textContent = escolheNumDado();
         handleClick(celulas);
-        dado1.removeEventListener("click", manipuladorDeClique);
     }
     dado1.addEventListener("click", manipuladorDeClique);
 }
@@ -49,9 +50,11 @@ function sorteiaDado(){
 }
 
 function handleClick(cell){
-    Array.from(cell).forEach(function (elemento) {
+    if(vezJogador == 1){
+        Array.from(cell).forEach(function (elemento) {
         elemento.addEventListener('click', selecionaColuna);
     });
+    }
 
 }
 
@@ -98,7 +101,14 @@ function selecionaColuna(event) {
         if((indice >= 0 && indice < 2) || (indice > 0 && indice <= 2)){
             for(let i=0; i<3; i++){
                 if(tabuleiroJ1[i][0] == 0){
-                    tabuleiroJ1[i][0] = parseInt(dado1.textContent);
+                    // tabuleiroJ1[i][0] = parseInt(dado1.textContent);
+                    if(dado1.textContent == ''){
+                        vezJogador = 1;
+                        jogaDado();
+                        gireODado();
+                    } else {
+                        tabuleiroJ1[i][0] = parseInt(dado1.textContent);
+                    }
                     break;
                 }
             }
@@ -106,7 +116,14 @@ function selecionaColuna(event) {
         else if((indice >= 3 && indice < 5) || (indice > 3 && indice <= 5)){
             for(let i=0; i<3; i++){
                 if(tabuleiroJ1[i][1] == 0){
-                    tabuleiroJ1[i][1] = parseInt(dado1.textContent);
+                    //tabuleiroJ1[i][1] = parseInt(dado1.textContent);
+                    if(dado1.textContent == ''){
+                        vezJogador = 1;
+                        jogaDado();
+                        alert('Gire o dado!');
+                    } else {
+                        tabuleiroJ1[i][1] = parseInt(dado1.textContent);
+                    }
                     break;
                 }
             }
@@ -114,7 +131,14 @@ function selecionaColuna(event) {
         else if((indice >= 6 && indice < 8) || (indice > 6 && indice <= 8)){
             for(let i=0; i<3; i++){
                 if(tabuleiroJ1[i][2] == 0){
-                    tabuleiroJ1[i][2] = parseInt(dado1.textContent);
+                    // tabuleiroJ1[i][2] = parseInt(dado1.textContent);
+                    if(dado1.textContent == ''){
+                        vezJogador = 1;
+                        jogaDado();
+                        alert('Gire o dado!');
+                    } else {
+                        tabuleiroJ1[i][2] = parseInt(dado1.textContent);
+                    }
                     break;
                 }
             }
@@ -218,4 +242,10 @@ function reiniciaJogo(){
     let pontosJ2 = document.getElementById('p2');
     pontosJ1.textContent = `${pontuacaoJogador(tabuleiroJ1)} pontos`;
     pontosJ2.textContent = `${pontuacaoJogador(tabuleiroJ2)} pontos`;
+}
+
+function gireODado(){
+    alert('Gire o dado!');
+    vezJogador = 1;
+    jogo();
 }
