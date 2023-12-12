@@ -7,6 +7,7 @@
   gap: 5px; /* Espaço entre as casas */
   width: 300px; /* Largura total da área de jogo */
   grid-auto-flow: column;
+  font-size: 30px;
 }
 
 .area-jogo div {
@@ -61,6 +62,7 @@
   height: 80px;
   background-color: #FFF;
   color: red;
+  font-size: 30px;
 }
 
 #p1, #p2{
@@ -74,6 +76,7 @@
   justify-content: center;
   align-items: center;
   margin: auto;
+  font-size: 20px;
 }
 
 .ptsCol, .ptsCol2{
@@ -84,4 +87,8 @@
 #vez{
   font-size: 28px;
   position: absolute;
+}
+
+.cell:hover{
+  background-color: rgb(241, 144, 144);
 }
