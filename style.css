@@ -91,4 +91,5 @@
   
   .cell:hover{
     background-color: rgb(241, 144, 144);
+    cursor: pointer;
   }
