@@ -25,29 +25,26 @@ function jogo(){
     verificaTabuleiro(tabuleiroJ2);
 
     if(vezJogador === 1){
-        jogaDado();
+        sorteiaDado(dado1);
         vez.textContent = 'Vez: Jogador 1';
         dado2.textContent = '';
     } else {
         vez.textContent = 'Vez: Jogador 2';
         dado1.textContent = '';
         setTimeout(function() {
-            sorteiaDado();
-        }, 1000);     }
+            sorteiaDado(dado2);
+        }, 500);     }
 }
 
-function jogaDado() {
-    function manipuladorDeClique(event) {
-        event.target.textContent = escolheNumDado();
+function sorteiaDado(dado){
+    dado.textContent = escolheNumDado();
+    if(vezJogador == 1){
         handleClick(celulas);
+    } else {
+        sorteiaIndice();
+        }
     }
-    dado1.addEventListener("click", manipuladorDeClique);
-}
-
-function sorteiaDado(){
-    dado2.textContent = escolheNumDado();
-    sorteiaIndice();
-}
+    
 
 function handleClick(cell){
     if(vezJogador == 1){
@@ -66,18 +63,20 @@ function sorteiaIndice(){
 }
 
 function sorteiaColuna(indice){
-    if(tabuleiroJ2[2][indice] != 0){
+    
+
+    if(tabuleiroJ2[2][indice] != 0 && tabuleiroJ2[1][indice] != 0 && tabuleiroJ2[0][indice] != 0){
         indice = 0;
         while(tabuleiroJ2[2][indice] != 0){
             indice++;
         }     
-    }
-    
-    for(let i=0; i<3; i++){
+    } else {
+        for(let i=0; i<3; i++){
             if(tabuleiroJ2[i][indice] == 0){
                 tabuleiroJ2[i][indice] = parseInt(dado2.textContent);
                 break;
             }
+    }
     }
         descartaDado(tabuleiroJ2, celulas2);
         atualizaTabuleiro(tabuleiroJ2, celulas2);
@@ -175,10 +174,11 @@ function colunaCheia(tabuleiro, indice) {
     let coluna = retornaColuna(indice);
 
 
-    if (tabuleiro[2][coluna] === 0) {
-        return false;
-    }
-    return true; 
+    if (tabuleiro[2][coluna] != 0 && tabuleiro[1][coluna] != 0 && tabuleiro[0][coluna] != 0) {
+        return true;
+    } 
+
+    return false; 
 }
 
 function descartaDado(table, cell){
@@ -242,10 +242,12 @@ function reiniciaJogo(){
     let pontosJ2 = document.getElementById('p2');
     pontosJ1.textContent = `${pontuacaoJogador(tabuleiroJ1)} pontos`;
     pontosJ2.textContent = `${pontuacaoJogador(tabuleiroJ2)} pontos`;
-}
 
-function gireODado(){
-    alert('Gire o dado!');
-    vezJogador = 1;
-    jogo();
+    let ptsCol = document.querySelectorAll('.ptsCol');
+    let ptsCol2 = document.querySelectorAll('.ptsCol2');
+
+    for (let i = 0; i < 3; i++) {
+        ptsCol[i].textContent = '0';
+        ptsCol2[i].textContent = '0';
+    }
 }
