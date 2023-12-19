@@ -186,14 +186,15 @@ function descartaDado(table, cell){
                 if(tabuleiroJ1[i][j] == tabuleiroJ2[k][j]){
                     if(vezJogador == 1){
                         tabuleiroJ2[k][j] = 0;
+                        atualizaTabuleiro(tabuleiroJ1, celulas);
                     }else if(vezJogador == 2){
                         tabuleiroJ1[i][j] = 0;
+                        atualizaTabuleiro(tabuleiroJ2, celulas2);
                     }
                 }
             }
         }
     }
-    atualizaTabuleiro(table, cell);
 }
 
 function verificaTabuleiro(table){
